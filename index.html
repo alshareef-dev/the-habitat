@@ -13,7 +13,7 @@
   --bg:#F4EFE6; --bg-alt:#EFE8DB; --surface:#FFFFFF; --surface-warm:#FBF8F2;
   --ink:#211F1A; --ink-2:#544E43; --muted:#8A8174;
   --brand:#2E3B31; --brand-deep:#243029; --brand-mid:#3F5446;
-  --clay:#9C6B43; --clay-soft:#C9A176; --gold:#B89B6E;
+  --clay:#9C6B43; --clay-soft:#C9A176; --gold:#B89B6E; --red:#C44040;
   --line:#E2D8C7; --line-soft:#ECE5D7;
   --nav-h:62px;
   --maxw:1120px;
@@ -53,34 +53,26 @@ a:hover{color:var(--clay)}
 /* hero */
 .hero{position:relative; background:
   radial-gradient(120% 90% at 85% -10%,rgba(63,84,70,.18),transparent 60%),
-  linear-gradient(180deg,var(--brand-deep),#2b3930);
+  linear-gradient(180deg,var(--brand-deep) 0%,rgba(36,48,41,.94) 28%,rgba(36,48,41,.8) 60%,rgba(36,48,41,.94) 100%),
+  url('header.png') center/cover no-repeat;
   color:#F3EEE4; overflow:hidden}
-.hero::after{content:""; position:absolute; inset-block-end:0; inset-inline:0; height:1px;
+.hero::after{content:""; position:absolute; inset-block-end:0; inset-inline:0; height:1px; z-index:1;
   background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:.6}
-.hero .wrap{padding-block:clamp(64px,11vw,128px)}
-.hero .eyebrow{display:inline-flex; align-items:center; gap:10px; font-size:.8rem; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--clay-soft); font-weight:600; margin-block-end:26px}
-.hero .eyebrow::before{content:""; width:34px; height:1px; background:var(--clay-soft)}
-.hero h1{margin:0; font-size:clamp(1.9rem,4.6vw,3.1rem); line-height:1.4; font-weight:700; letter-spacing:-.01em}
-.hero .brandline{margin:14px 0 0; font-size:clamp(1.5rem,3.2vw,2.2rem); font-weight:300; color:#EBE3D3}
-.hero .brandline .tm{color:var(--clay-soft)}
-.hero .lead{margin:22px 0 0; max-width:62ch; font-size:clamp(1rem,1.5vw,1.18rem); font-weight:300;
+.hero .wrap{position:relative; z-index:2; padding-block:clamp(72px,14vw,148px);
+  display:flex; flex-direction:column; align-items:center; text-align:center}
+.hero h1{margin:0; max-width:24ch; font-size:clamp(1.5rem,3.2vw,2.2rem); line-height:1.45;
+  font-weight:700; letter-spacing:-.01em}
+.hero .brandline{margin:18px 0 0; font-size:clamp(1.9rem,4.6vw,3.1rem); font-weight:700; color:var(--clay-soft)}
+.hero .lead{margin:24px 0 0; max-width:56ch; font-size:clamp(1rem,1.5vw,1.18rem); font-weight:300;
   line-height:1.85; color:#DFD7C7}
-.hero .meta{margin-block-start:30px; display:flex; flex-wrap:wrap; gap:10px 28px; align-items:center}
-.hero .meta .chip{display:inline-flex; align-items:center; gap:9px; font-size:.92rem; color:#E6DECE}
-.hero .meta .chip b{font-weight:600; color:#fff}
-.hero .meta .dot{width:5px;height:5px;border-radius:50%;background:var(--clay-soft)}
-.hero .disclaimer{margin-block-start:26px; max-width:74ch; font-size:.86rem; line-height:1.8;
-  color:#BDB4A2; border-inline-start:2px solid rgba(201,161,118,.45); padding-inline-start:16px}
-
-/* metric strip */
-.metrics{margin-block-start:42px; display:grid; gap:14px;
-  grid-template-columns:repeat(5,1fr)}
-.metric{background:rgba(255,255,255,.06); border:1px solid rgba(201,161,118,.22);
-  border-radius:var(--r-sm); padding:18px 16px; backdrop-filter:blur(2px)}
-.metric-num{font-size:1.7rem; font-weight:700; color:#fff; line-height:1.2; letter-spacing:.01em;
-  direction:ltr; text-align:right}
-.metric-lbl{margin-block-start:6px; font-size:.82rem; line-height:1.5; color:#D7CFBE}
+.hero .badge{display:inline-flex; align-items:center; margin-block-start:36px; padding:3px 9px;
+  border:1px solid rgba(196,64,64,.5); border-radius:999px; background:rgba(196,64,64,.22);
+  color:var(--red); font-size:.72rem; font-weight:600; letter-spacing:.04em}
+.hero .conf{margin:18px 0 0; max-width:50ch; font-size:.96rem; line-height:1.8; color:#E6DECE}
+.hero .conf .conf-name{display:inline-block; margin-block-start:4px; font-size:1.12em; font-weight:700; color:#fff}
+.hero .date{margin:14px 0 0; font-size:.96rem; font-weight:600; color:#fff}
+.hero .disclaimer{margin-block-start:30px; max-width:62ch; font-size:.86rem; line-height:1.8;
+  color:#BDB4A2}
 
 /* sections */
 .section{padding-block:clamp(56px,9vw,108px); scroll-margin-block-start:calc(var(--nav-h) + 8px)}
@@ -94,7 +86,7 @@ a:hover{color:var(--clay)}
 .banner-sub{margin:8px 0 0; color:var(--muted); font-size:1.02rem; font-weight:400; max-width:64ch}
 
 .content{max-width:none}
-.content > p{max-width:none; margin:0 0 18px; color:var(--ink)}
+.content > p{max-width:none; margin:0 0 18px; color:var(--ink); text-align:justify; text-align-last:right}
 .content > p + p{margin-block-start:0}
 
 /* subsection heads */
@@ -109,9 +101,9 @@ a:hover{color:var(--clay)}
 /* callouts */
 .callout{background:var(--surface-warm); border:1px solid var(--line);
   border-inline-start:4px solid var(--clay); border-radius:var(--r-sm);
-  padding:22px 24px; margin:24px 0; box-shadow:var(--sh-sm); max-width:88ch}
+  padding:22px 24px; margin:24px 0; box-shadow:var(--sh-sm); max-width:none}
 .callout-title{font-weight:700; color:var(--brand); font-size:1.08rem; margin-block-end:8px; line-height:1.5}
-.callout-body{color:var(--ink-2); line-height:1.9}
+.callout-body{color:var(--ink-2); line-height:1.9; text-align:justify; text-align-last:right}
 
 /* lists */
 .doc-list{max-width:none; margin:8px 0 20px; padding:0; list-style:none}
@@ -173,23 +165,20 @@ a.ext:hover{color:var(--clay); border-color:var(--clay-soft)}
 .totop:hover{background:var(--clay)}
 
 /* responsive */
-@media (max-width:1023px){
-  .metrics{grid-template-columns:repeat(3,1fr)}
-}
 @media (max-width:640px){
   body{font-size:16px}
   .brand .en{display:none}
-  .metrics{grid-template-columns:repeat(2,1fr)}
   .banner{flex-direction:row; flex-wrap:wrap}
   .subhead{flex-wrap:wrap; gap:6px}
 }
 
 /* print */
 @media print{
-  .nav,.progress,.totop,.cta-actions,.hero .meta,.metrics{display:none !important}
+  .nav,.progress,.totop,.cta-actions{display:none !important}
   body{background:#fff; color:#000; font-size:12pt}
   .hero{background:#fff; color:#000}
-  .hero h1,.hero .brandline,.hero .lead,.hero .disclaimer{color:#000}
+  .hero h1,.hero .brandline,.hero .lead,.hero .disclaimer,.hero .conf,.hero .conf .conf-name,.hero .date{color:#000}
+  .hero .badge{color:#000; border-color:rgba(0,0,0,.4); background:rgba(0,0,0,.06)}
   .section.band{background:#fff}
   .banner-title,.subhead-text,.callout-title{color:#000}
   .table-wrap{overflow:visible; box-shadow:none}
@@ -212,16 +201,12 @@ a.ext:hover{color:var(--clay); border-color:var(--clay-soft)}
 <main id="top">
   <section class="hero" id="hero">
     <div class="wrap">
-      <span class="eyebrow">وثيقة سرية وخاصة</span>
       <h1>الخطة الاستراتيجية لتأسيس مجموعة عقارية قابضة نوعية في الرياض</h1>
-      <p class="brandline">المنزل <span class="tm">(The Habitat)</span></p>
-      <p class="lead">منصة سكنية تشغيلية مؤسسية تبدأ بإدارة أصول الغير، ثم تنتقل إلى الاستثمار المشترك والتطوير والاحتفاظ الانتقائي</p>
-      <div class="meta">
-        <span class="chip">وثيقة سرية وخاصة معدة للنقاش مع الشريك الاستثماري المحتمل الأستاذ محمد الماجد</span>
-        <span class="dot"></span>
-        <span class="chip"><b>يونيو 2026</b></span>
-      </div>
-      <div class="metrics"><div class="metric"><div class="metric-num">700</div><div class="metric-lbl">وحدة سكنية تحت الإدارة في السنة الأولى</div></div><div class="metric"><div class="metric-num">3</div><div class="metric-lbl">مشاريع في السنة الأولى</div></div><div class="metric"><div class="metric-num">20%</div><div class="metric-lbl">ملكية المجموعة في وحدات السنة الأولى</div></div><div class="metric"><div class="metric-num">90–120</div><div class="metric-lbl">ألف ريال متوسط الإيجار السنوي للوحدة</div></div><div class="metric"><div class="metric-num">15,000</div><div class="metric-lbl">وحدة تحت الإدارة المستهدفة بحلول 2034</div></div></div>
+      <p class="brandline">المنزل The Habitat</p>
+      <p class="lead">منصة سكنية تشغيلية مؤسسية تبدأ بإدارة أصول الغير،<br>ثم تنتقل إلى الاستثمار المشترك والتطوير والاحتفاظ الانتقائي</p>
+      <span class="badge">وثيقة سرية وخاصة</span>
+      <p class="conf">معدة للنقاش مع الشريك الاستثماري المحتمل الأستاذ<br><b class="conf-name">محمد الماجد</b></p>
+      <p class="date">يونيو 2026</p>
       <p class="disclaimer">تقوم هذه الوثيقة على بيانات سوقية عامة وافتراضات تخطيطية أولية. ولا تمثل دراسة جدوى نهائية أو عرضًا للأوراق المالية أو استشارة قانونية أو ضريبية.</p>
     </div>
   </section>

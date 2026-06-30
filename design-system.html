@@ -12,7 +12,7 @@
   --bg:#F4EFE6; --bg-alt:#EFE8DB; --surface:#FFFFFF; --surface-warm:#FBF8F2;
   --ink:#211F1A; --ink-2:#544E43; --muted:#8A8174;
   --brand:#2E3B31; --brand-deep:#243029; --brand-mid:#3F5446;
-  --clay:#9C6B43; --clay-soft:#C9A176; --gold:#B89B6E;
+  --clay:#9C6B43; --clay-soft:#C9A176; --gold:#B89B6E; --red:#C44040;
   --line:#E2D8C7; --line-soft:#ECE5D7;
   --r:14px; --r-sm:10px;
   --sh:0 1px 2px rgba(33,31,26,.04),0 8px 28px rgba(33,31,26,.06);
@@ -72,7 +72,8 @@ a{color:var(--brand-mid)}
 .type-row:last-child{border-block-end:none}
 .type-label{flex:0 0 160px;font-size:.8rem;color:var(--muted);direction:ltr;text-align:left;font-family:monospace}
 .type-sample{color:var(--ink)}
-.t-hero{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--brand)}
+.t-hero{font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:700;color:var(--brand)}
+.t-brandline{font-size:clamp(1.9rem,4.6vw,3.1rem);font-weight:700;color:var(--clay-soft)}
 .t-banner{font-size:2rem;font-weight:300;color:var(--clay)}
 .t-bannertitle{font-size:1.6rem;font-weight:600;color:var(--brand)}
 .t-subhead{font-size:1.3rem;font-weight:600;color:var(--brand)}
@@ -125,6 +126,12 @@ a{color:var(--brand-mid)}
 .chip-row{display:flex;gap:8px;flex-wrap:wrap}
 .chip{padding:7px 14px;border-radius:999px;font-size:.85rem;font-weight:500;background:var(--bg-alt);color:var(--ink-2)}
 .chip.active{background:var(--brand);color:#fff}
+
+/* badge sample (used on the hero, over the dark image) */
+.badge-demo{background:var(--brand-deep);border-radius:var(--r-sm);padding:28px;display:flex;justify-content:center}
+.badge-sample{display:inline-flex;align-items:center;padding:5px 13px;border:1px solid rgba(196,64,64,.5);
+  border-radius:999px;background:rgba(196,64,64,.12);color:var(--red);font-size:.8rem;
+  font-weight:600;letter-spacing:.04em}
 
 /* responsive note cards */
 .bp-grid{grid-template-columns:repeat(3,1fr)}
@@ -195,6 +202,7 @@ footer{background:var(--brand-deep);color:#A9A192;text-align:center;padding:24px
     <p class="desc">عائلة IBM Plex Sans Arabic — مصمَّمة للقراءة المؤسسية الطويلة بالعربية، بأوزان 300–700، مع أرقام جدولية في الجداول والمقاييس.</p>
     <div class="comp-card">
       <div class="type-row"><span class="type-label">Hero h1 / 700</span><span class="type-sample t-hero">الخطة الاستراتيجية لتأسيس مجموعة عقارية قابضة</span></div>
+      <div class="type-row"><span class="type-label">Brandline / 700</span><span class="type-sample t-brandline">المنزل The Habitat</span></div>
       <div class="type-row"><span class="type-label">Banner Num / 300</span><span class="type-sample t-banner">01</span></div>
       <div class="type-row"><span class="type-label">Banner Title / 600</span><span class="type-sample t-bannertitle">الأطروحة الاستثمارية</span></div>
       <div class="type-row"><span class="type-label">Subhead / 600</span><span class="type-sample t-subhead">1.1 الملخص التنفيذي</span></div>
@@ -251,6 +259,11 @@ footer{background:var(--brand-deep);color:#A9A192;text-align:center;padding:24px
           <div class="metric-dark"><div class="mn">700</div><div class="ml">وحدة في السنة الأولى</div></div>
           <div class="metric-dark"><div class="mn">20%</div><div class="ml">ملكية المجموعة</div></div>
         </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>بادج (Badge)</h3>
+        <div class="badge-demo"><span class="badge-sample">وثيقة سرية وخاصة</span></div>
       </div>
 
       <div class="comp-card">
