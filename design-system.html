@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نظام التصميم — المنزل (The Habitat)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4EFE6; --bg-alt:#EFE8DB; --surface:#FFFFFF; --surface-warm:#FBF8F2;
+  --ink:#211F1A; --ink-2:#544E43; --muted:#8A8174;
+  --brand:#2E3B31; --brand-deep:#243029; --brand-mid:#3F5446;
+  --clay:#9C6B43; --clay-soft:#C9A176; --gold:#B89B6E;
+  --line:#E2D8C7; --line-soft:#ECE5D7;
+  --r:14px; --r-sm:10px;
+  --sh:0 1px 2px rgba(33,31,26,.04),0 8px 28px rgba(33,31,26,.06);
+  --sh-sm:0 1px 2px rgba(33,31,26,.05),0 3px 12px rgba(33,31,26,.05);
+  --maxw:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans Arabic",system-ui,"Segoe UI",Tahoma,sans-serif;
+  font-size:17px;line-height:1.9;font-weight:400;-webkit-font-smoothing:antialiased}
+a{color:var(--brand-mid)}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,4vw,40px)}
+
+/* top bar */
+.top{position:sticky;inset-block-start:0;z-index:50;background:rgba(244,239,230,.9);
+  backdrop-filter:blur(10px);border-block-end:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.top .word{flex:0 0 auto;font-weight:700;letter-spacing:.05em;direction:ltr;color:var(--brand)}
+.top nav{display:flex;gap:2px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{flex:0 0 auto;white-space:nowrap;font-size:.88rem;font-weight:500;color:var(--ink-2);padding:6px 12px;border-radius:999px}
+.top nav a:hover{background:var(--bg-alt);color:var(--brand)}
+.top .back{flex:0 0 auto;white-space:nowrap;font-size:.85rem;color:var(--clay);font-weight:600}
+@media (max-width:640px){
+  .top .wrap{gap:10px}
+  .top .word{font-size:.85rem}
+}
+
+/* hero */
+.ds-hero{background:linear-gradient(180deg,#2b3930,var(--brand-deep));color:#F3EEE4;padding-block:64px}
+.ds-hero .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--clay-soft);font-weight:600;margin-block-end:16px}
+.ds-hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--clay-soft)}
+.ds-hero h1{margin:0 0 12px;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700}
+.ds-hero p{margin:0;max-width:64ch;color:#D9D1C1;line-height:1.85}
+
+/* sections */
+.sec{padding-block:64px;border-block-end:1px solid var(--line)}
+.sec.band{background:var(--bg-alt)}
+.sec h2{display:flex;align-items:center;gap:12px;margin:0 0 8px;font-size:1.5rem;font-weight:600;color:var(--brand)}
+.sec h2 .n{font-size:.8rem;font-weight:700;color:#fff;background:var(--clay);
+  width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+.sec .desc{margin:0 0 32px;color:var(--ink-2);max-width:72ch}
+.grid{display:grid;gap:16px}
+
+/* color swatches */
+.swatches{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.swatch{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--surface);box-shadow:var(--sh-sm)}
+.swatch .fill{height:74px}
+.swatch .meta{padding:10px 12px}
+.swatch .name{font-weight:600;font-size:.92rem;color:var(--ink)}
+.swatch .hex{font-size:.8rem;color:var(--muted);direction:ltr;text-align:right;font-family:monospace}
+
+/* type scale */
+.type-row{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-block-end:1px dashed var(--line)}
+.type-row:last-child{border-block-end:none}
+.type-label{flex:0 0 160px;font-size:.8rem;color:var(--muted);direction:ltr;text-align:left;font-family:monospace}
+.type-sample{color:var(--ink)}
+.t-hero{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--brand)}
+.t-banner{font-size:2rem;font-weight:300;color:var(--clay)}
+.t-bannertitle{font-size:1.6rem;font-weight:600;color:var(--brand)}
+.t-subhead{font-size:1.3rem;font-weight:600;color:var(--brand)}
+.t-body{font-size:1.0625rem;font-weight:400;line-height:1.95}
+.t-caption{font-size:.85rem;font-weight:500;color:var(--muted)}
+
+/* spacing */
+.space-row{display:flex;align-items:center;gap:16px;margin:10px 0}
+.space-bar{background:var(--clay);height:14px;border-radius:3px}
+.space-label{flex:0 0 90px;font-size:.82rem;color:var(--ink-2);font-family:monospace;direction:ltr;text-align:left}
+
+/* components showcase */
+.comp-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:24px;box-shadow:var(--sh-sm)}
+.comp-card h3{margin:0 0 14px;font-size:1rem;font-weight:600;color:var(--brand);
+  display:flex;align-items:center;gap:8px}
+.comp-card h3::before{content:"";width:8px;height:8px;background:var(--clay);border-radius:2px;transform:rotate(45deg)}
+
+/* mini banner sample */
+.mini-banner{display:flex;align-items:flex-start;gap:16px;padding-block-end:16px;border-block-end:1px solid var(--line)}
+.mini-banner .num{font-size:2.1rem;font-weight:300;color:var(--clay);line-height:1}
+.mini-banner .t{margin:0;font-size:1.15rem;font-weight:600;color:var(--brand)}
+.mini-banner .s{margin:4px 0 0;color:var(--muted);font-size:.92rem}
+
+/* callout sample */
+.callout{background:var(--surface-warm);border:1px solid var(--line);border-inline-start:4px solid var(--clay);
+  border-radius:var(--r-sm);padding:18px 20px}
+.callout .ct{font-weight:700;color:var(--brand);margin-block-end:6px}
+.callout .cb{color:var(--ink-2);font-size:.95rem;line-height:1.8}
+
+/* metric card sample */
+.metric-dark{background:var(--brand-deep);border-radius:var(--r-sm);padding:16px;border:1px solid rgba(201,161,118,.25)}
+.metric-dark .mn{font-size:1.4rem;font-weight:700;color:#fff}
+.metric-dark .ml{font-size:.78rem;color:#D7CFBE;margin-block-start:4px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;
+  font-weight:600;font-size:.92rem;cursor:pointer;border:1px solid transparent}
+.btn-primary{background:var(--clay);color:#fff}
+.btn-ghost-dark{background:var(--brand-deep);color:#F3EEE4;border-color:rgba(201,161,118,.5)}
+.btn-outline{background:transparent;color:var(--brand);border-color:var(--brand)}
+
+/* mini table */
+.mini-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.mini-table th{background:var(--brand);color:#F3EEE4;text-align:start;padding:9px 12px;font-weight:600}
+.mini-table td{padding:8px 12px;border-block-start:1px solid var(--line-soft)}
+.mini-table tr:nth-child(even) td{background:var(--surface-warm)}
+
+/* nav chip sample */
+.chip-row{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:7px 14px;border-radius:999px;font-size:.85rem;font-weight:500;background:var(--bg-alt);color:var(--ink-2)}
+.chip.active{background:var(--brand);color:#fff}
+
+/* responsive note cards */
+.bp-grid{grid-template-columns:repeat(3,1fr)}
+.bp-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:18px;box-shadow:var(--sh-sm)}
+.bp-card .bp-name{font-weight:700;color:var(--brand);margin-block-end:4px}
+.bp-card .bp-range{font-size:.82rem;color:var(--clay);font-family:monospace;direction:ltr;text-align:right;margin-block-end:10px}
+.bp-card ul{margin:0;padding-inline-start:18px;color:var(--ink-2);font-size:.88rem;line-height:1.8}
+
+footer{background:var(--brand-deep);color:#A9A192;text-align:center;padding:24px;font-size:.85rem}
+
+@media (max-width:760px){
+  .bp-grid{grid-template-columns:1fr}
+  .type-row{flex-direction:column;gap:4px}
+  .type-label{flex:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="word">THE HABITAT</span>
+    <nav>
+      <a href="#colors">الألوان</a>
+      <a href="#type">الطباعة</a>
+      <a href="#spacing">المسافات</a>
+      <a href="#components">المكوّنات</a>
+      <a href="#responsive">الاستجابة</a>
+    </nav>
+    <a class="back" href="index.html">→ عرض الموقع</a>
+  </div>
+</header>
+
+<section class="ds-hero">
+  <div class="wrap">
+    <span class="eyebrow">Design System</span>
+    <h1>نظام التصميم — المنزل (The Habitat)</h1>
+    <p>توثيق مرجعي حي لكل الرموز والمكوّنات البصرية المستخدمة فعليًا في موقع المذكرة الاستثمارية: الألوان، الطباعة العربية، المسافات، وأنماط المكوّنات. اتجاه هادئ، سكني، مؤسسي — يجمع جدّية العقار مع دفء الضيافة.</p>
+  </div>
+</section>
+
+<section class="sec" id="colors">
+  <div class="wrap">
+    <h2><span class="n">1</span>الألوان</h2>
+    <p class="desc">خلفية ورقية دافئة، حبر شبه أسود دافئ، أخضر صنوبري عميق كهوية المؤسسة، ولمسة طينية/برونزية واحدة كعنصر تمييز.</p>
+    <div class="grid swatches">
+      <div class="swatch"><div class="fill" style="background:var(--bg)"></div><div class="meta"><div class="name">bg — خلفية الصفحة</div><div class="hex">#F4EFE6</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--bg-alt)"></div><div class="meta"><div class="name">bg-alt — شريط بديل</div><div class="hex">#EFE8DB</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--surface);border-block-end:1px solid var(--line)"></div><div class="meta"><div class="name">surface — بطاقات/جداول</div><div class="hex">#FFFFFF</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--surface-warm)"></div><div class="meta"><div class="name">surface-warm — صناديق التمييز</div><div class="hex">#FBF8F2</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--ink)"></div><div class="meta"><div class="name">ink — النص الأساسي</div><div class="hex">#211F1A</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--ink-2)"></div><div class="meta"><div class="name">ink-2 — نص ثانوي</div><div class="hex">#544E43</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--muted)"></div><div class="meta"><div class="name">muted — تسميات</div><div class="hex">#8A8174</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--brand)"></div><div class="meta"><div class="name">brand — أخضر صنوبري</div><div class="hex">#2E3B31</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--brand-deep)"></div><div class="meta"><div class="name">brand-deep — Hero/Footer</div><div class="hex">#243029</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--brand-mid)"></div><div class="meta"><div class="name">brand-mid — تفاعل/روابط</div><div class="hex">#3F5446</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--clay)"></div><div class="meta"><div class="name">clay — لمسة التمييز</div><div class="hex">#9C6B43</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--clay-soft)"></div><div class="meta"><div class="name">clay-soft — تعبئة ناعمة</div><div class="hex">#C9A176</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--gold)"></div><div class="meta"><div class="name">gold — خط شعرة</div><div class="hex">#B89B6E</div></div></div>
+      <div class="swatch"><div class="fill" style="background:var(--line)"></div><div class="meta"><div class="name">line — حدود</div><div class="hex">#E2D8C7</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="type">
+  <div class="wrap">
+    <h2><span class="n">2</span>الطباعة</h2>
+    <p class="desc">عائلة IBM Plex Sans Arabic — مصمَّمة للقراءة المؤسسية الطويلة بالعربية، بأوزان 300–700، مع أرقام جدولية في الجداول والمقاييس.</p>
+    <div class="comp-card">
+      <div class="type-row"><span class="type-label">Hero h1 / 700</span><span class="type-sample t-hero">الخطة الاستراتيجية لتأسيس مجموعة عقارية قابضة</span></div>
+      <div class="type-row"><span class="type-label">Banner Num / 300</span><span class="type-sample t-banner">01</span></div>
+      <div class="type-row"><span class="type-label">Banner Title / 600</span><span class="type-sample t-bannertitle">الأطروحة الاستثمارية</span></div>
+      <div class="type-row"><span class="type-label">Subhead / 600</span><span class="type-sample t-subhead">1.1 الملخص التنفيذي</span></div>
+      <div class="type-row"><span class="type-label">Body / 400 · lh 1.95</span><span class="type-sample t-body">قيمة الأصل لا تنتهي عند اكتمال البناء، بل تبدأ عند لحظة تشغيله.</span></div>
+      <div class="type-row"><span class="type-label">Caption / 500</span><span class="type-sample t-caption">رسوم الإدارة الأساسية 7%–10% من الإيرادات المحصلة</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="spacing">
+  <div class="wrap">
+    <h2><span class="n">3</span>المسافات</h2>
+    <p class="desc">وحدة أساس 4px، إيقاع قسم 96–112px على سطح المكتب، 64px على الجهاز اللوحي، 44px على الجوال.</p>
+    <div class="comp-card">
+      <div class="space-row"><span class="space-label">4px</span><span class="space-bar" style="width:4px"></span></div>
+      <div class="space-row"><span class="space-label">8px</span><span class="space-bar" style="width:8px"></span></div>
+      <div class="space-row"><span class="space-label">12px</span><span class="space-bar" style="width:12px"></span></div>
+      <div class="space-row"><span class="space-label">16px</span><span class="space-bar" style="width:16px"></span></div>
+      <div class="space-row"><span class="space-label">24px</span><span class="space-bar" style="width:24px"></span></div>
+      <div class="space-row"><span class="space-label">32px</span><span class="space-bar" style="width:32px"></span></div>
+      <div class="space-row"><span class="space-label">48px</span><span class="space-bar" style="width:48px"></span></div>
+      <div class="space-row"><span class="space-label">64px</span><span class="space-bar" style="width:64px"></span></div>
+      <div class="space-row"><span class="space-label">96px</span><span class="space-bar" style="width:96px"></span></div>
+      <div class="space-row"><span class="space-label">128px</span><span class="space-bar" style="width:128px"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="components">
+  <div class="wrap">
+    <h2><span class="n">4</span>المكوّنات</h2>
+    <p class="desc">عيّنات حيّة للمكوّنات كما تظهر فعليًا في الموقع.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-block-end:18px">
+
+      <div class="comp-card">
+        <h3>عنوان قسم (Banner)</h3>
+        <div class="mini-banner">
+          <span class="num">02</span>
+          <div><p class="t">نموذج العمل وخلق القيمة</p><p class="s">من التشغيل للغير إلى التملك التدريجي</p></div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>صندوق تمييز تنفيذي (Callout)</h3>
+        <div class="callout">
+          <div class="ct">مبدأ لا يقبل المساومة</div>
+          <div class="cb">أي عنصر تصميمي لا يرفع الإشغال أو يحسّن الاحتفاظ لا يُعتمد لمجرد أنه يبدو جذابًا.</div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>بطاقة مقياس (Metric)</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="metric-dark"><div class="mn">700</div><div class="ml">وحدة في السنة الأولى</div></div>
+          <div class="metric-dark"><div class="mn">20%</div><div class="ml">ملكية المجموعة</div></div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>الأزرار</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span class="btn btn-primary">تواصل لمناقشة الاستثمار</span>
+          <span class="btn btn-ghost-dark" style="background:var(--bg-alt);color:var(--brand);border-color:var(--line)">إجراء ثانوي</span>
+          <span class="btn btn-outline">إجراء تخطيطي</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>شرائح التنقّل (Nav)</h3>
+        <div class="chip-row">
+          <span class="chip active">الأطروحة</span>
+          <span class="chip">نموذج العمل</span>
+          <span class="chip">المنتج والتجربة</span>
+          <span class="chip">المحرك التجاري</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <h3>جدول بيانات</h3>
+        <table class="mini-table">
+          <thead><tr><th>الإشغال</th><th>رسوم الإدارة 8%</th><th>إجمالي دخل المنصة</th></tr></thead>
+          <tbody>
+            <tr><td>70%</td><td>1.40 م</td><td>2.11 م</td></tr>
+            <tr><td>85%</td><td>1.70 م</td><td>3.27 م</td></tr>
+            <tr><td>100%</td><td>2.00 م</td><td>5.00 م</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="responsive">
+  <div class="wrap">
+    <h2><span class="n">5</span>قواعد الاستجابة</h2>
+    <p class="desc">ثلاث نقاط كسر رئيسية، مع تكيّف الجداول والتنقل والبطاقات في كل منها.</p>
+    <div class="grid bp-grid">
+      <div class="bp-card">
+        <div class="bp-name">سطح المكتب</div>
+        <div class="bp-range">≥ 1024px</div>
+        <ul><li>تنقل أفقي كامل</li><li>شريط مقاييس 5 أعمدة</li><li>جداول بعرض كامل</li><li>إيقاع 112px</li></ul>
+      </div>
+      <div class="bp-card">
+        <div class="bp-name">الجهاز اللوحي</div>
+        <div class="bp-range">640–1023px</div>
+        <ul><li>تنقل مكثّف</li><li>بطاقات مقاييس 2×</li><li>إيقاع 64px</li></ul>
+      </div>
+      <div class="bp-card">
+        <div class="bp-name">الجوال</div>
+        <div class="bp-range">&lt; 640px</div>
+        <ul><li>تنقل قابل للتمرير الأفقي</li><li>بطاقات عمود واحد</li><li>جداول داخل غلاف قابل للتمرير</li><li>إيقاع 44px</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>المنزل (The Habitat) · نظام التصميم · وثيقة مرجعية داخلية</footer>
+
+</body>
+</html>
